@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="net.xanir.kariyerassignment.login.LoginViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/_22ssp"
+            android:textAllCaps="true"
+            android:id="@+id/title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/colorAccent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/guideline"
+            app:layout_constraintGuide_percent="0.4"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:id="@+id/user_name"
+            android:onTextChanged="@{(text,start,before,count) -> viewModel.onUserNameChanged(text)}"
+            android:drawablePadding="@dimen/_10sdp"
+            android:drawableStart="@drawable/ic_person_outline"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:hint="@string/user_name"
+            app:layout_constraintTop_toBottomOf="@id/guideline"
+            android:background="@drawable/border_rounded_empty"
+            android:layout_height="@dimen/_42sdp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/password"
+            android:hint="@string/password"
+            android:onTextChanged="@{(text,start,before,count) -> viewModel.onPasswordChanged(text)}"
+            android:drawableStart="@drawable/ic_lock_outline"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/user_name"
+            android:background="@drawable/border_rounded_empty"
+            android:layout_height="@dimen/_42sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:id="@+id/remember_me_text"
+            app:layout_constraintStart_toEndOf="@id/remember_me_switch"
+            app:layout_constraintTop_toBottomOf="@+id/remember_me_switch"
+            app:layout_constraintBottom_toTopOf="@+id/remember_me_switch"
+            android:text="@string/remember_me"
+            android:layout_height="wrap_content"/>
+        <Switch
+            android:layout_width="wrap_content"
+            android:id="@+id/remember_me_switch"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:text="@string/login"
+            android:background="@drawable/border_rounded_red"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/remember_me_text"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
