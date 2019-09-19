@@ -2,6 +2,9 @@
 <layout>
     <data>
         <variable
+            name="fragment"
+            type="net.xanir.kariyerassignment.login.LoginFragment" />
+        <variable
             name="viewModel"
             type="net.xanir.kariyerassignment.login.LoginViewModel" />
     </data>
@@ -66,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:id="@+id/remember_me_text"
+            android:onClick="@{fragment.rememberMe()}"
             app:layout_constraintStart_toEndOf="@id/remember_me_switch"
             app:layout_constraintTop_toBottomOf="@+id/remember_me_switch"
             app:layout_constraintBottom_toTopOf="@+id/remember_me_switch"
@@ -83,6 +87,7 @@
         <Button
             android:layout_width="match_parent"
             android:text="@string/login"
+            android:onClick="@{() -> fragment.login()}"
             android:background="@drawable/border_rounded_red"
             android:textColor="@android:color/white"
             android:layout_marginStart="@dimen/_25sdp"
