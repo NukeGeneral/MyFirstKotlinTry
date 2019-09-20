@@ -25,6 +25,5 @@ class OrdersItemViewHolder internal constructor(internal var binding: ListItemOr
                 this.binding.lineView.visibility = View.VISIBLE
             }
         }
-        this.binding.clickHandler.callOnClick()
     }
 }

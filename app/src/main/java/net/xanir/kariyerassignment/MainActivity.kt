@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val savedSession = SharedPrefUtils.instance(SharedPrefUtils.PreferenceMode.TEMPORARY).loadBoolean(SharedPrefKeys.REMEMBER_ME)
-        if(true){
+        if(savedSession){
             fragment = findFragmentByTag(OrdersFragment::class.java)
             if(fragment == null){
                 replaceFragment(OrdersFragment.newInstance())

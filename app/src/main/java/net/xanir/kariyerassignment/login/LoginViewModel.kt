@@ -57,7 +57,7 @@ class LoginViewModel : ViewModel() {
         password = sequence.toString()
     }
 
-    fun saveRememberMeStatus(){
-        SharedPrefUtils.instance(SharedPrefUtils.PreferenceMode.TEMPORARY).saveBoolean(SharedPrefKeys.REMEMBER_ME,true)
+    fun saveRememberMeStatus(boolean: Boolean){
+        SharedPrefUtils.instance(SharedPrefUtils.PreferenceMode.TEMPORARY).saveBoolean(SharedPrefKeys.REMEMBER_ME,boolean)
     }
 }

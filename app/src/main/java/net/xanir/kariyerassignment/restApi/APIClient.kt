@@ -35,7 +35,7 @@ object APIClient {
             httpBuilder.writeTimeout(30, TimeUnit.SECONDS)
             httpBuilder.addInterceptor { chain ->
                 val requestBuilder = chain.request().newBuilder()
-                requestBuilder.addHeader("Platform-Information", "android")
+                requestBuilder.addHeader("Platform-Information", "Android")
                 requestBuilder.addHeader("Application-Version", BuildConfig.VERSION_NAME)
                 chain.proceed(requestBuilder.build())
             }

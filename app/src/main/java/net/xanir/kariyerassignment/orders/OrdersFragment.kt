@@ -30,6 +30,7 @@ class OrdersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = ViewModelProviders.of(this).get(OrdersViewModel::class.java)
         adapter = OrdersAdapter()
+        adapter.viewModel = mViewModel
         binding.orderView.adapter = adapter
         mViewModel.productList.observe(viewLifecycleOwner, Observer {
             adapter.updateData(it!!)
