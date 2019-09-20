@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:id="@+id/remember_me_text"
-            android:onClick="@{fragment.rememberMe()}"
+            android:onClick="@{() -> fragment.rememberMe()}"
             app:layout_constraintStart_toEndOf="@id/remember_me_switch"
             app:layout_constraintTop_toBottomOf="@+id/remember_me_switch"
             app:layout_constraintBottom_toTopOf="@+id/remember_me_switch"

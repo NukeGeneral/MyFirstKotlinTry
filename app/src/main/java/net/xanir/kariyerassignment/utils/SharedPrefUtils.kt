@@ -276,10 +276,10 @@ private constructor() {
     }
 
     companion object {
-
-        lateinit var sharedPrefUtils: SharedPrefUtils
+        private lateinit var sharedPrefUtils : SharedPrefUtils
         @Synchronized
         fun instance(preferenceModes: PreferenceMode): SharedPrefUtils {
+            sharedPrefUtils = SharedPrefUtils()
             sharedPrefUtils.instancePreferenceMode = preferenceModes
             return sharedPrefUtils
         }

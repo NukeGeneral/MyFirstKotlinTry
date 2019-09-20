@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object APIClient {
 
-    private const val SERVER_BASE_URL = "http://kariyertechchallenge.mockable.io/"
+    private const val SERVER_BASE_URL = "http://kariyertechchallenge.mockable.io"
     private var retrofit: Retrofit? = null
     private var gson: Gson? = null
     private var services: APIServices? = null
