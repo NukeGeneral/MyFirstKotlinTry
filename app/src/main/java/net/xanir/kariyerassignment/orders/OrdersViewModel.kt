@@ -1,5 +1,6 @@
 package net.xanir.kariyerassignment.orders
 
+import androidx.annotation.IntegerRes
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -26,12 +27,18 @@ class OrdersViewModel : ViewModel(){
         }
     }
 
+    //Get name of month from given month number string
     fun findMonthFromInt(number : String) : String{
         val calendar = Calendar.getInstance()
-        calendar.set(Calendar.MONTH,Integer.valueOf(number))
+        val value = Integer.valueOf(number)
+        if (value <= 0 || value > 12){
+            return ""
+        }
+        calendar.set(Calendar.MONTH,Integer.valueOf(number) - 1)
         return String.format(Locale("tr"),"%tb",calendar)
     }
 
+    //Determine text color of order status
     fun determineColor(string: String) : Int {
         when(string){
             "Hazırlanıyor" -> return R.color.squareYellow
@@ -41,6 +48,7 @@ class OrdersViewModel : ViewModel(){
         }
     }
 
+    //Determine drawable which is left side of order status
     fun determineDrawable(string: String) : Int{
         when(string){
             "Hazırlanıyor" -> return R.drawable.square_yellow

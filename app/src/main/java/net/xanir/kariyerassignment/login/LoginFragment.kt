@@ -31,6 +31,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        //Error displaying in edit text
         mViewModel.passwordErrorMessage.observe(viewLifecycleOwner, Observer{ integer ->
             if (integer == null) {
                 binding.password.clearFocus()
@@ -40,6 +41,7 @@ class LoginFragment : Fragment() {
                 binding.password.error = getString(integer)
             }
         })
+        //Error displaying in edit text
         mViewModel.userNameErrorMessage.observe(viewLifecycleOwner, Observer{ integer ->
             if (integer == null) {
                 binding.userName.clearFocus()
@@ -61,6 +63,7 @@ class LoginFragment : Fragment() {
         }
     }
 
+    //If component is not switch(e.g textView click) that results in switch check change too
     private fun switchChange(view: View){
         if(!(view is Switch)){
             binding.rememberMeSwitch.isChecked = !binding.rememberMeSwitch.isChecked

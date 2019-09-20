@@ -15,6 +15,7 @@ class LoginViewModel : ViewModel() {
     val passwordErrorMessage = MutableLiveData<Int>()
     private val correctUserName = "kariyer"
 
+    //Check informations are correct(Like mocking API)
     private fun checkValidInformation(userName: String, password: String): Boolean {
         if (userName != correctUserName) {
             passwordErrorMessage.value = R.string.wrong_information
@@ -26,12 +27,14 @@ class LoginViewModel : ViewModel() {
         return true
     }
 
+    //Try to login via button
     fun login(): Boolean {
         val nameValid = checkNameIsValid()
         val passValid = checkPasswordIsValid()
         return nameValid && passValid && checkValidInformation(userName, password)
     }
 
+    //Just check if it's empty or not
     fun checkNameIsValid(): Boolean {
         if (userName.isEmpty()) {
             userNameErrorMessage.value = R.string.empty_user_name
@@ -40,6 +43,7 @@ class LoginViewModel : ViewModel() {
         return true
     }
 
+    //Just check if it's empty or not
     fun checkPasswordIsValid(): Boolean {
         if (password.isEmpty()) {
             passwordErrorMessage.value = R.string.empty_password
@@ -56,6 +60,7 @@ class LoginViewModel : ViewModel() {
         password = sequence.toString()
     }
 
+    //Change session storing state for future
     fun saveRememberMeStatus(boolean: Boolean){
         SharedPrefUtils.instance(SharedPrefUtils.PreferenceMode.TEMPORARY).saveBoolean(SharedPrefKeys.REMEMBER_ME,boolean)
     }

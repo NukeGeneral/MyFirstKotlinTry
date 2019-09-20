@@ -7,11 +7,6 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see [Testing documentation](http://d.android.com/tools/testing)
- */
 class OrdersViewModelTest {
 
     private lateinit var viewModel: OrdersViewModel
@@ -23,9 +18,9 @@ class OrdersViewModelTest {
 
     @Test
     fun isMonthCorrect() {
-        assertEquals("Oca", viewModel.findMonthFromInt("0"))
+        assertEquals("Oca", viewModel.findMonthFromInt("1"))
         assertNotEquals("Ara",viewModel.findMonthFromInt("13"))
-        assertEquals("May",viewModel.findMonthFromInt("100"))
+        assertEquals("",viewModel.findMonthFromInt("96"))
     }
 
     @Test
