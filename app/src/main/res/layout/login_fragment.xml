@@ -31,7 +31,7 @@
             app:layout_constraintGuide_percent="0.4"
             android:layout_height="wrap_content"/>
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_marginStart="@dimen/_25sdp"
             android:layout_marginEnd="@dimen/_25sdp"
@@ -39,7 +39,7 @@
             android:inputType="text"
             android:onTextChanged="@{(text,start,before,count) -> viewModel.onUserNameChanged(text)}"
             android:drawablePadding="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_person_outline"
+            app:drawableStartCompat="@drawable/ic_person_outline"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_10sdp"
             android:hint="@string/user_name"
@@ -47,13 +47,13 @@
             android:background="@drawable/border_rounded_empty"
             android:layout_height="@dimen/_42sdp"/>
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:id="@+id/password"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:onTextChanged="@{(text,start,before,count) -> viewModel.onPasswordChanged(text)}"
-            android:drawableStart="@drawable/ic_lock_outline"
+            app:drawableStartCompat="@drawable/ic_lock_outline"
             android:layout_marginStart="@dimen/_25sdp"
             android:drawablePadding="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_25sdp"
