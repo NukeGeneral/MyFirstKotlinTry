@@ -32,6 +32,7 @@ class OrdersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = ViewModelProviders.of(this).get(OrdersViewModel::class.java)
+        mViewModel.loadData()
         adapter = OrdersAdapter()
         adapter.viewModel = mViewModel
         binding.orderView.adapter = adapter

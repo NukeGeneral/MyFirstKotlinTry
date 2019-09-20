@@ -16,7 +16,8 @@ import kotlin.collections.ArrayList
 class OrdersViewModel : ViewModel(){
 
     var productList = MutableLiveData<ArrayList<MainResponse>>()
-    init {
+
+    fun loadData(){
         viewModelScope.launch {
             val response = APIClient.getServices().productList()
             if(response.isSuccessful){
@@ -27,7 +28,7 @@ class OrdersViewModel : ViewModel(){
 
     fun findMonthFromInt(number : String) : String{
         val calendar = Calendar.getInstance()
-        calendar.add(Calendar.MONTH,Integer.valueOf(number))
+        calendar.set(Calendar.MONTH,Integer.valueOf(number))
         return String.format(Locale("tr"),"%tb",calendar)
     }
 
