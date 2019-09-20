@@ -9,4 +9,8 @@
     <string name="wrong_information">Kullanıcı adı ya da şifre hatalı</string>
     <string name="logout">Çıkış Yap</string>
     <string name="my_orders">Siparişlerim</string>
+    <string name="are_you_sure_logout">Çıkış yapmak istediğine emin misin?</string>
+    <string name="dismiss">Vazgeç</string>
+    <string name="warning">Uyarı</string>
+
 </resources>

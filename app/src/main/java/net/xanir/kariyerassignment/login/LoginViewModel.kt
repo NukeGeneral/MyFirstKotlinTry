@@ -1,6 +1,5 @@
 package net.xanir.kariyerassignment.login
 
-import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -9,8 +8,8 @@ import net.xanir.kariyerassignment.utils.SharedPrefKeys
 import net.xanir.kariyerassignment.utils.SharedPrefUtils
 
 class LoginViewModel : ViewModel() {
-    private lateinit var userName: String
-    private lateinit var password: String
+    private var userName = ""
+    private var password = ""
     private val correctPassword = "2019ADev"
     val userNameErrorMessage = MutableLiveData<Int>()
     val passwordErrorMessage = MutableLiveData<Int>()

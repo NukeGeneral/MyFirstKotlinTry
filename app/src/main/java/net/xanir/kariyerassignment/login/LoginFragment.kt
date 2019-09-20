@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Switch
+import android.widget.TextView
 import androidx.lifecycle.Observer
 
 import net.xanir.kariyerassignment.MainActivity
@@ -48,25 +49,22 @@ class LoginFragment : Fragment() {
                 binding.userName.error = getString(integer)
             }
         })
-        binding.fragment = this
         binding.viewModel = mViewModel
+        binding.rememberMeSwitch.setOnClickListener{switchChange(it)}
+        binding.rememberMeText.setOnClickListener{switchChange(it)}
+        binding.login.setOnClickListener{login()}
     }
 
-    fun login() {
+    private fun login() {
         if (mViewModel.login()) {
-            if (activity is MainActivity) {
-                val fragment = (activity as MainActivity).findFragmentByTag(OrdersFragment::class.java)
-                if (fragment == null) {
-                    (activity as MainActivity).replaceFragment(OrdersFragment.newInstance())
-                } else {
-                    (activity as MainActivity).replaceFragment(fragment)
-                }
-            }
+            activity!!.supportFragmentManager.beginTransaction().replace(R.id.main_container,OrdersFragment.newInstance()).commitAllowingStateLoss()
         }
     }
 
-    fun switchChange(){
-        binding.rememberMeSwitch.isChecked = binding.rememberMeSwitch.isChecked.not()
+    private fun switchChange(view: View){
+        if(!(view is Switch)){
+            binding.rememberMeSwitch.isChecked = !binding.rememberMeSwitch.isChecked
+        }
         mViewModel.saveRememberMeStatus(binding.rememberMeSwitch.isChecked)
     }
 

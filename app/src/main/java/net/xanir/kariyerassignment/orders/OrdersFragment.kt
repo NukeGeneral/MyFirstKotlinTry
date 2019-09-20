@@ -8,11 +8,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import net.xanir.kariyerassignment.MainActivity
 
 import net.xanir.kariyerassignment.R
 import net.xanir.kariyerassignment.databinding.OrdersFragmentBinding
 import net.xanir.kariyerassignment.login.LoginFragment
+import net.xanir.kariyerassignment.utils.SharedPrefUtils
 
 class OrdersFragment : Fragment() {
 
@@ -35,6 +38,20 @@ class OrdersFragment : Fragment() {
         mViewModel.productList.observe(viewLifecycleOwner, Observer {
             adapter.updateData(it!!)
         })
+        binding.logout.setOnClickListener{
+            val builder = AlertDialog.Builder(it.context)
+            builder.setPositiveButton(R.string.dismiss) { dialog, _ ->
+                dialog.dismiss()
+            }
+            builder.setNegativeButton(R.string.logout) { dialog, _ ->
+                dialog.dismiss()
+                activity!!.supportFragmentManager.beginTransaction().replace(R.id.main_container,LoginFragment.newInstance()).commitAllowingStateLoss()
+                SharedPrefUtils.instance(SharedPrefUtils.PreferenceMode.TEMPORARY).clearData()
+            }
+            builder.setMessage(R.string.are_you_sure_logout)
+            builder.setTitle(R.string.warning)
+            builder.show()
+        }
     }
 
     companion object {

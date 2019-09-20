@@ -12,39 +12,30 @@ import net.xanir.kariyerassignment.utils.SharedPrefUtils
 
 class MainActivity : AppCompatActivity() {
 
-    private var fragment : Fragment? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val savedSession = SharedPrefUtils.instance(SharedPrefUtils.PreferenceMode.TEMPORARY).loadBoolean(SharedPrefKeys.REMEMBER_ME)
         if(savedSession){
-            fragment = findFragmentByTag(OrdersFragment::class.java)
-            if(fragment == null){
-                replaceFragment(OrdersFragment.newInstance())
-            }
-            else{
-                replaceFragment(fragment!!)
-            }
+            replaceFragment(OrdersFragment.newInstance())
         }
         else{
-            fragment = findFragmentByTag(LoginFragment::class.java)
-            if (fragment == null) {
-                replaceFragment(LoginFragment.newInstance())
-            } else {
-                replaceFragment(fragment!!)
-            }
+            replaceFragment(LoginFragment.newInstance())
         }
     }
 
+    //This can be used to find fragment which might added to backstack
     fun findFragmentByTag(className: Class<*>): Fragment? {
         return supportFragmentManager.findFragmentByTag(className.name)
     }
 
+    //It is possible that we can add fragments backstack with tags too
     fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.name).addToBackStack(fragment.javaClass.name).commitAllowingStateLoss()
+        supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment).commitAllowingStateLoss()
     }
 
+    //It can be useful for saving last ui in background,keep application running
+    //This requires fragments should added to backstack
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount == 1) {
             moveTaskToBack(true)

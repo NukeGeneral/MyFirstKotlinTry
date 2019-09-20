@@ -13,6 +13,7 @@ import java.lang.RuntimeException
 
 /**
  * Created by Umur Kaya on 20-Sep-19.
+ * I've used this class as Java in Piri Guide,for this task I refactored it as Kotlin
  */
 
 class SharedPrefUtils
@@ -32,7 +33,7 @@ private constructor() {
         TEMPORARY,
 
         /**
-         * Permanent means it cannot be resetted
+         * Permanent means it cannot be reset
          */
         PERMANENT
     }

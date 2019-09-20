@@ -1,6 +1,5 @@
 package net.xanir.kariyerassignment.orders
 
-import android.graphics.drawable.Drawable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
